@@ -1,0 +1,35 @@
+{% extends "index.html" %}
+
+{% block contenido %}
+		<!-- Inicio cajas 3-->
+
+	<div id="pagewrap">
+		<div class="cont">
+			<form class="contact_form" action="#" method="post">
+			    <ul>
+			       <li>
+			            <h2>Contáctanos</h2>
+			       </li>
+			       <li>
+			           <label for="name">Nombre:</label>
+			           <input type="text"  placeholder="Daniel Peñarreta" required />
+			       </li>
+			       <li>
+			           <label for="email">Email:</label>
+			           <input type="email" name="email" placeholder="Danodine@gmail.com" required />
+			       </li>
+			       <li>
+			           <label for="Mensaje">Mensaje:</label>
+			           <textarea name="Mensaje" cols="40" rows="6" required ></textarea>
+			       </li>
+			        <li>
+			          <button class="submit" type="submit">Enviar</button>
+			        </li>
+			    </ul>
+			</form>
+				
+		</div>
+	<footer class="foot">
+	</footer>
+</div>
+{% endblock %}

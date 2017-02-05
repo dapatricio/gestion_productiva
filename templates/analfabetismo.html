@@ -1,0 +1,67 @@
+{% extends "index.html" %}
+
+{% block contenido %}
+		<!-- Inicio cajas 3-->
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+	  google.charts.load('current', {packages: ['corechart']});
+	  google.charts.setOnLoadCallback(drawChart);
+	  ...
+	</script>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<center>
+	<form method="POST" action='/analfabetismo'>
+		{% csrf_token %} 
+	<select id="selProv7" name="selProv7">
+        {% for p in id_provincia %}
+           	<option value ="{{p.id_provincia}}">{{p.nombre_proncia}}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Presioname</button>
+    </form>
+</center>
+{{analfabeto}}
+{{alfabeto}}
+	<div id="pagewrap">
+		<div class="cont">
+			<header class="heder-col3">
+			
+				<center>
+						<!--Div that will hold the pie chart-->
+					<div id="chart_div7">					   	
+					</div>
+				</center>
+		</div>
+	<footer class="foot">
+	</footer>
+	<script type="text/javascript">
+    google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart7);
+
+      // Callback that creates and populates a data table, 
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart7() {
+
+      // Create the data table.
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Topping');
+      data.addColumn('number', 'cantidad');
+      data.addRows([
+        ['Analfabetismo', {{analfabeto}}],
+        ['Alfabetismo', {{alfabeto}}]
+      ]);
+
+// Set chart options
+      var options = {'title':'Analfebetismo'};
+
+      // Instantiate and draw our chart, passing in some options.
+      var chart = new google.visualization.PieChart(document.getElementById('chart_div7'));
+      chart.draw(data, options);
+    }
+	</script>
+</div>
+
+{% endblock %}
